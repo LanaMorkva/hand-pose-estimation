@@ -6,6 +6,8 @@ In this project I am striving to achieve real-time hand tracking and hand pose e
 This project is still work in progress. 
 To achieve my goal I followed the next plan:
 
+![alt text](figures/Tracking_plan.png)
+
 ## Detection
 As a model for the detection of the hands I used Faster-RCNN pretrained on COCO dataset and with ResNet50 as a backbone. I fine-tuned this model using EgoHand dataset.
 
@@ -64,7 +66,9 @@ To train this model I needed to create heatmaps for each keypoints as a target. 
 
 Additionally, contrary to Faster-RCNN, the data in UNet should be preprocessed and resized to the specific size. 
 
-Now, moving on to the model: 
+As I mentioned before I used a model based on UNet for this task, the only differences are that instead on 4 steps of convolution and deconvolution, I used 3 with less dimensionality for faster convergences, and the last layer of this network is 3x3 convolution instead of 1x1: 
+
+![alt text](figures/unet-architectures.png)
 
 At first, I trained this model for 150 epoch only on the first 32560 images:
 

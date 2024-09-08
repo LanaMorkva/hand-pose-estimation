@@ -3,3 +3,4 @@ FreiHAND_dataset/
 __pycache__/
 model/m_keypoints_*.pth
 detection/m_keypoints_*.pth
+output.avi
