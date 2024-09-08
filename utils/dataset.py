@@ -28,7 +28,7 @@ class FreiHANDDataset(Dataset):
             self.K = np.array(json.load(f))
 
     def __len__(self):
-        return len(self.xyz)
+        return len(self.image_paths)
 
     def __getitem__(self, idx):
         img_path = os.path.join(self.data_dir, 'rgb', self.image_paths[idx])
@@ -42,8 +42,9 @@ class FreiHANDDataset(Dataset):
         else:
             image = to_tensor(image_org)
 
-        keypoints_3d = self.xyz[idx]  
-        camera_intrinsics = self.K[idx] 
+        anno_idx = idx % len(self.xyz)
+        keypoints_3d = self.xyz[anno_idx]  
+        camera_intrinsics = self.K[anno_idx] 
 
         keypoints = projectPoints(keypoints_3d, camera_intrinsics)
         keypoints = keypoints / img_org_size
