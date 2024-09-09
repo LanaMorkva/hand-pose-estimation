@@ -72,7 +72,7 @@ As I mentioned before I used a model based on UNet for this task, the only diffe
 
 For the training of this network I used Dice loss = 1 - Dice coefficient:
 
-![alt text](figures/dice_coeff.png)
+![alt text](figures/dice_coeff.jpg)
 
 At first, I trained this model for 150 epoch only on the first 32560 images:
 
